@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+:root {
+  --bg-deep-space: #050511;
+  --glass-panel: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --neon-cyan: #00f3ff;
+  --neon-purple: #bc13fe;
+  --neon-red: #ff0055;
+  --hologram-gradient: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(188, 19, 254, 0.1));
+  --font-main: 'Orbitron', sans-serif; 
+}
+
+body {
+  background-color: var(--bg-deep-space);
+  color: #ffffff;
+  background-image: radial-gradient(circle at 50% 50%, #1a1a40 0%, #050511 100%);
+}
+
+.holo-card {
+  background: var(--glass-panel);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 0 15px rgba(0, 243, 255, 0.15);
+  border-radius: 16px;
+}
