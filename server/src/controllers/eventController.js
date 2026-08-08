@@ -1,5 +1,10 @@
 const eventService = require('../services/eventService');
-const asyncHandler = require('../middlewares/asyncHandler'); // Your util
+const asyncHandler = require('../middlewares/asyncHandler');
+
+const getAllEvents = asyncHandler(async (req, res) => {
+  const events = await eventService.getAllEvents();
+  res.status(200).json({ success: true, count: events.length, data: events });
+});
 
 const createEvent = asyncHandler(async (req, res) => {
   const event = await eventService.createNewEvent(req.body, req.user._id);
@@ -7,9 +12,9 @@ const createEvent = asyncHandler(async (req, res) => {
 });
 
 const getEventsNearMe = asyncHandler(async (req, res) => {
-  const { long, lat } = req.query; 
+  const { long, lat } = req.query;
   if (!long || !lat) throw new Error('Location required');
-  
+
   const events = await eventService.getNearbyEvents(Number(long), Number(lat));
   res.status(200).json({ success: true, count: events.length, data: events });
 });
@@ -24,4 +29,4 @@ const deleteEvent = asyncHandler(async (req, res) => {
   res.status(200).json({ success: true, message: 'Event deleted and attendees notified' });
 });
 
-module.exports = { createEvent, getEventsNearMe,joinEvent, deleteEvent };
+module.exports = { getAllEvents, createEvent, getEventsNearMe, joinEvent, deleteEvent };

@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { FaMapMarkerAlt, FaClock, FaTrash, FaUserPlus, FaCheckCircle, FaUserAstronaut } from 'react-icons/fa';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { AuthContext } from '../contexts/AuthContext';
@@ -9,6 +10,7 @@ import { motion } from 'framer-motion';
 
 const EventCard = ({ event }) => {
   const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const queryClient = useQueryClient();
   
   const [timeLeft, setTimeLeft] = useState('');
@@ -119,12 +121,19 @@ const EventCard = ({ event }) => {
                 </span>
               ) : (
                 !isClosed && (
-                  <button 
-                    onClick={() => joinMutation.mutate()}
+                  <button
+                    onClick={() => {
+                      if (!user) {
+                        toast.error('Please login to join events');
+                        navigate('/login');
+                      } else {
+                        joinMutation.mutate();
+                      }
+                    }}
                     disabled={joinMutation.isPending}
                     className="flex items-center px-4 py-1.5 rounded-lg bg-neon-cyan/10 text-neon-cyan border border-neon-cyan/50 hover:bg-neon-cyan hover:text-black hover:shadow-[0_0_10px_rgba(0,243,255,0.5)] transition text-sm font-bold"
                   >
-                    <FaUserPlus className="mr-2" /> 
+                    <FaUserPlus className="mr-2" />
                     {joinMutation.isPending ? 'Syncing...' : 'Join'}
                   </button>
                 )

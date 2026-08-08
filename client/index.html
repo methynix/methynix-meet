@@ -1,14 +1,50 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>client</title>
+    <meta name="description" content="Discover events and connect with people around you using real-time geolocation technology. Find local meetups, celebrations, and community gatherings near you." />
+    <meta name="keywords" content="events, geolocation, local events, community, meetups, discover, connect" />
+    <meta name="theme-color" content="#050511" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+    <!-- Security Headers -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; media-src 'self' blob:; frame-ancestors 'none'; base-uri 'self'; form-action 'self'" />
+    <meta http-equiv="X-Content-Type-Options" content="nosniff" />
+    <meta http-equiv="X-Frame-Options" content="DENY" />
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block" />
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin" />
+
+    <!-- Open Graph / Social Meta Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://methynixconnect.com" />
+    <meta property="og:title" content="Methynix Connect - Discover Events Near You" />
+    <meta property="og:description" content="Connect with your local community through real-time event discovery powered by geolocation technology." />
+    <meta property="og:image" content="/og-image.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Methynix Connect - Discover Events Near You" />
+    <meta name="twitter:description" content="Connect with your local community through real-time event discovery." />
+
+    <!-- Favicon -->
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='75' font-size='75' fill='%2300f3ff' font-weight='bold'>M</text></svg>" />
+    <link rel="apple-touch-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'><rect fill='%23050511' width='180' height='180'/><text x='90' y='135' text-anchor='middle' font-size='120' fill='%2300f3ff' font-weight='bold'>M</text></svg>" />
+
+    <title>Methynix Connect - Discover Events Near You</title>
   </head>
   <body>
     <div id="root"></div>
     <div id="modal-root"></div>
     <script type="module" src="/src/main.jsx"></script>
+
+    <!-- No-JS fallback message -->
+    <noscript>
+      <div style="padding: 20px; text-align: center; background: #050511; color: #00f3ff; font-family: Orbitron, sans-serif;">
+        <h1>JavaScript Required</h1>
+        <p>Please enable JavaScript to use Methynix Connect.</p>
+      </div>
+    </noscript>
   </body>
 </html>

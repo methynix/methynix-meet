@@ -1,10 +1,10 @@
-import { useState } from 'react'; // Add useState
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { useCreateEvent } from '../hooks/useEventsQuery';
 import { useGeoLocation } from '../hooks/useGeoLocation';
 import { useNavigate } from 'react-router-dom';
 import Input from '../atoms/Input';
-import LocationPicker from '../components/LocationPicker'; // Import the new component
+import MapPicker from '../components/MapPicker';
 import toast from 'react-hot-toast';
 
 const CreateEvent = () => {
@@ -73,28 +73,28 @@ const CreateEvent = () => {
             error={errors.eventDate}
           />
 
-          {/* LOCATION PICKER SECTION */}
+          {/* MAP PICKER SECTION */}
           <div className="mb-6">
-            <label className="block text-neon-cyan mb-2 text-sm uppercase">Target Location</label>
+            <label className="block text-neon-cyan mb-2 text-sm uppercase">Select Event Location</label>
             {loaded && coordinates.lat ? (
-              <LocationPicker 
-                initialCoords={{ lat: coordinates.lat, lng: coordinates.long }} 
+              <MapPicker
+                initialCoords={{ lat: coordinates.lat, lng: coordinates.long }}
                 onLocationSelect={setSelectedLocation}
               />
             ) : (
               <div className="h-[300px] flex items-center justify-center border border-glass-border rounded bg-white/5 animate-pulse">
-                Acquiring Base Coordinates...
+                Acquiring Location Data...
               </div>
             )}
             <p className="text-xs text-gray-500 mt-2">
-              * Security Protocol: You can only project events within your current city limits.
+              💡 Click on map to select location or search by address. You can only create events in accessible areas.
             </p>
           </div>
 
-          <button 
+          <button
             type="submit"
             disabled={createEventMutation.isPending}
-            className="w-full mt-2 bg-gradient-to-r from-neon-purple to-purple-800 text-white font-bold py-3 rounded-lg hover:scale-[1.02] transition"
+            className="w-full mt-2 bg-neon-purple text-white font-bold py-3 rounded-lg hover:scale-[1.02] transition"
           >
             {createEventMutation.isPending ? 'Projecting...' : 'Launch Event'}
           </button>

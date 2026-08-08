@@ -24,3 +24,9 @@ dist-ssr
 *.sw?
 
 .env
+
+# Documentation and seed files
+*.md
+seed.js
+seeds/
+*.seed.js

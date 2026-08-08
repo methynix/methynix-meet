@@ -1,5 +1,9 @@
 const Event = require('../models/Event');
 
+const findAll = async () => {
+  return await Event.find().populate('organizer', 'name contact');
+};
+
 const createEvent = async (eventData) => {
   return await Event.create(eventData);
 };
@@ -15,12 +19,13 @@ const findEventById = async (id) => {
 const addAttendee = async (eventId, userId) => {
   return await Event.findByIdAndUpdate(
     eventId,
-    { $addToSet: { attendees: userId } }, 
+    { $addToSet: { attendees: userId } },
     { new: true }
   );
 };
 
 module.exports = {
+  findAll,
   createEvent,
   findEventsByLocation,
   findEventById,

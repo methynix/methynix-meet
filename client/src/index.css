@@ -1,6 +1,8 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Orbitron:wght@400;700;900&display=swap');
+
 @tailwind base;
-@tailwind utilities;
 @tailwind components;
+@tailwind utilities;
 
 :root {
   --bg-deep-space: #050511;
@@ -10,19 +12,80 @@
   --neon-purple: #bc13fe;
   --neon-red: #ff0055;
   --hologram-gradient: linear-gradient(135deg, rgba(0, 243, 255, 0.1), rgba(188, 19, 254, 0.1));
-  --font-main: 'Orbitron', sans-serif; 
+  --font-main: 'Orbitron', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   background-color: var(--bg-deep-space);
   color: #ffffff;
   background-image: radial-gradient(circle at 50% 50%, #1a1a40 0%, #050511 100%);
+  background-attachment: fixed;
+  font-family: 'Inter', system-ui, sans-serif;
+  line-height: 1.6;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+h1 { font-size: clamp(2rem, 5vw, 4rem); }
+h2 { font-size: clamp(1.5rem, 3.5vw, 3rem); }
+h3 { font-size: clamp(1.25rem, 2.5vw, 2rem); }
+
+p, li, span {
+  font-family: 'Inter', system-ui, sans-serif;
 }
 
 .holo-card {
   background: var(--glass-panel);
   backdrop-filter: blur(12px);
   border: 1px solid var(--glass-border);
-  box-shadow: 0 0 15px rgba(0, 243, 255, 0.15);
   border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.holo-card:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: rgba(0, 243, 255, 0.3);
+}
+
+/* Smooth transitions */
+* {
+  @apply transition-all duration-300 ease-out;
+}
+
+/* Remove default transitions for performance */
+button, a {
+  @apply transition-all duration-200;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 243, 255, 0.3);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 243, 255, 0.5);
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(188, 19, 254, 0.3);
+  color: #00f3ff;
 }

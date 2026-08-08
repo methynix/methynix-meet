@@ -3,6 +3,13 @@ const Notification = require('../models/Notification'); // Accessing Model direc
 const AppError = require('../utils/AppError');
 
 /**
+ * Get All Events
+ */
+const getAllEvents = async () => {
+  return await eventRepository.findAll();
+};
+
+/**
  * Create a new Event
  */
 const createNewEvent = async (data, userId) => {
@@ -82,6 +89,7 @@ const deleteEvent = async (eventId, userId) => {
 };
 
 module.exports = {
+  getAllEvents,
   createNewEvent,
   getNearbyEvents,
   joinEvent,

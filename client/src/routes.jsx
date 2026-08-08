@@ -1,29 +1,24 @@
 import { createBrowserRouter } from 'react-router-dom';
 import RootLayout from './components/RootLayout';
 import AdminDashboard from './pages/AdminDashboard';
-import ProtectedRoute from './routes/ProtectedRoute'; // Ensure this file exists in src/routes/
+import ProtectedRoute from './routes/ProtectedRoute';
 
 import LandingPage from './pages/LandingPage';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import CreateEvent from './pages/CreateEvent';
+import PrivacyPolicy from './pages/PrivacyPolicy';
+import TermsAndConditions from './pages/TermsAndConditions';
+import SupportUs from './pages/SupportUs';
+import NotFound from './pages/NotFound';
 
 export const router = createBrowserRouter([
   {
     path: '/',
     element: <RootLayout />,
-    // Custom Error Boundary for the "Cosmic" feel
-    errorElement: (
-      <div className="min-h-screen bg-[#050511] flex flex-col items-center justify-center text-center p-4 font-orbitron">
-        <h1 className="text-6xl text-neon-red mb-4">404</h1>
-        <h2 className="text-2xl text-white mb-2">SYSTEM MALFUNCTION</h2>
-        <p className="text-gray-400">The requested coordinates do not exist in this galaxy.</p>
-        <a href="/" className="mt-6 text-neon-cyan hover:underline">Return to Base</a>
-      </div>
-    ),
+    errorElement: <NotFound />,
     children: [
-      // Public Routes
       {
         index: true,
         element: <LandingPage />,
@@ -36,24 +31,30 @@ export const router = createBrowserRouter([
         path: 'register',
         element: <Register />,
       },
-
-      // Protected Routes (Require Auth)
+      {
+        path: 'privacy',
+        element: <PrivacyPolicy />,
+      },
+      {
+        path: 'terms',
+        element: <TermsAndConditions />,
+      },
+      {
+        path: 'support',
+        element: <SupportUs />,
+      },
       {
         path: 'dashboard',
+        element: <Dashboard />,
+      },
+      {
+        path: 'admin',
         element: (
           <ProtectedRoute>
-            <Dashboard />
+            <AdminDashboard />
           </ProtectedRoute>
         ),
       },
-      {
-  path: 'admin',
-  element: (
-    <ProtectedRoute>
-      <AdminDashboard />
-    </ProtectedRoute>
-  ),
-},
       {
         path: 'create-event',
         element: (
@@ -61,6 +62,10 @@ export const router = createBrowserRouter([
             <CreateEvent />
           </ProtectedRoute>
         ),
+      },
+      {
+        path: '*',
+        element: <NotFound />,
       },
     ],
   },

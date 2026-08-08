@@ -5,7 +5,8 @@ const { protect } = require('../middlewares/authMiddleware');
 const validate = require('../middlewares/validatorMiddleware');
 const { createEventSchema } = require('../validators/eventValidator');
 
-// Public Route - MUST be defined before /:id routes
+// Public Routes - MUST be defined before /:id routes
+router.get('/', eventController.getAllEvents);
 router.get('/nearby', eventController.getEventsNearMe);
 
 // Protected Routes

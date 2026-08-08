@@ -6,6 +6,7 @@ import { AuthContext } from '../contexts/AuthContext';
 import api from '../services/axiosInstance';
 import { FaRocket, FaUserAstronaut, FaBell, FaSignOutAlt, FaBars, FaTimes } from 'react-icons/fa';
 import { motion, AnimatePresence } from 'framer-motion';
+import Footer from './Footer';
 
 // --- Sub-Component: Notification Bell ---
 const NotificationBell = () => {
@@ -85,8 +86,8 @@ const RootLayout = () => {
               <div className="p-2 bg-neon-purple/10 rounded-lg border border-neon-purple/30 group-hover:border-neon-cyan/50 transition duration-500">
                 <FaRocket className="text-neon-cyan text-xl group-hover:rotate-45 transition-transform duration-500" />
               </div>
-              <span className="text-xl font-bold tracking-wider text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple">
-                METHYNIX
+              <span className="text-xl font-bold tracking-wider text-neon-cyan">
+                MEET
               </span>
             </NavLink>
 
@@ -165,12 +166,15 @@ const RootLayout = () => {
       </nav>
 
       {/* --- Main Content Injection --- */}
-      <main className="pt-20 min-h-[calc(100vh-80px)] container mx-auto px-4">
+      <main className="pt-20 min-h-screen">
         <Outlet />
       </main>
 
+      {/* --- Footer --- */}
+      <Footer />
+
       {/* --- Global Toast Config --- */}
-      <Toaster 
+      <Toaster
         position="top-right"
         toastOptions={{
           className: '',

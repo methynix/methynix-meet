@@ -30,7 +30,7 @@ const Register = () => {
         animate={{ opacity: 1, scale: 1 }}
         className="holo-card p-8 w-full max-w-md border-neon-cyan/30"
       >
-        <h2 className="text-3xl font-orbitron text-center mb-6 text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-cyan">
+        <h2 className="text-3xl font-orbitron text-center mb-6 text-neon-purple">
           NEW IDENTITY
         </h2>
         
