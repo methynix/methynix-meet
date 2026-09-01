@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const morgan = require('morgan');
+const path = require('path');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 const AppError = require('./utils/AppError');
 const adminRoutes = require('./routes/adminRoutes');
@@ -19,6 +20,12 @@ const eventRoutes = require('./routes/eventRoutes');
 const app = express();
 
 app.set('trust proxy', 1);
+
+// Serve static files from client build in production
+if (process.env.NODE_ENV === 'production') {
+  const clientBuildPath = path.join(__dirname, '../../client/dist');
+  app.use(express.static(clientBuildPath));
+}
 
 app.use(securityHeaders);
 
@@ -44,6 +51,13 @@ app.use('/api/events', apiLimiter);
 app.use('/api/auth', authRoutes);
 app.use('/api/events', eventRoutes);
 app.use('/api/admin', adminRoutes);
+
+// Serve index.html for SPA routing in production
+if (process.env.NODE_ENV === 'production') {
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../../client/dist/index.html'));
+  });
+}
 
 app.all(/(.*)/, (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));

@@ -1,0 +1,19 @@
+{
+  "name": "methynix-meet",
+  "version": "1.0.0",
+  "description": "Methynix Meet - Event Discovery Platform",
+  "engines": {
+    "node": ">=20.0.0",
+    "npm": ">=10.0.0"
+  },
+  "scripts": {
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install",
+    "build": "cd client && npm install && npm run build",
+    "dev": "concurrently \"cd client && npm run dev\" \"cd server && npm run dev\"",
+    "start": "cd server && node server.js",
+    "seed": "cd server && npm run seed"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}
