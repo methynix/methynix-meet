@@ -1,6 +1,5 @@
 const helmet = require('helmet');
 const rateLimit = require('express-rate-limit');
-const mongoSanitize = require('express-mongo-sanitize');
 const hpp = require('hpp');
 
 const limiter = rateLimit({
@@ -59,8 +58,6 @@ const securityHeaders = helmet({
   },
 });
 
-const dataSanitization = mongoSanitize();
-
 const preventParameterPollution = hpp({
   whitelist: [
     'sort',
@@ -78,6 +75,5 @@ module.exports = {
   limiter,
   loginLimiter,
   apiLimiter,
-  dataSanitization,
   preventParameterPollution,
 };
