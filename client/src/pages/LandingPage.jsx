@@ -91,7 +91,7 @@ const LandingPage = () => {
             muted
             loop
             className="absolute inset-0 w-full h-full object-cover opacity-35"
-            src="/meeting-video.mp4"
+            src="https://res.cloudinary.com/dwt1u991q/video/upload/v1788317607/meeting-video-compressed_nu2pdg.mp4"
           />
           <div className="absolute inset-0 bg-deep-space/85"></div>
         </div>
