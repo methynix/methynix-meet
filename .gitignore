@@ -1,0 +1,50 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+.env.example
+
+# Documentation
+*.md
+!README.md
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+# Build outputs
+dist/
+build/
+.next/
+out/
+
+# IDE
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+.DS_Store
+Thumbs.db
+
+# Testing
+coverage/
+.nyc_output/
+
+# Logs
+logs/
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Seed files
+seed.js
+seeds/
+*.seed.js
