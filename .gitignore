@@ -6,7 +6,7 @@
 
 # Documentation
 *.md
-!README.md
+
 
 # Node
 node_modules/
